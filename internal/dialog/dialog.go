@@ -56,8 +56,15 @@ func (d *Dialog) Next(answer string) BotAnswer {
 			Text: message,
 		}
 	}
+	if d.currentStep.nextStep != nil {
+		return BotAnswer{
+			Text:     fmt.Sprintf("%s\n%s", d.currentStep.wrongAnswerMessage, d.currentStep.welcomeMessage),
+			Image:    "",
+			Keyboard: d.currentStep.possibleAnswers,
+		}
+	}
 	return BotAnswer{
-		Text:     fmt.Sprintf("%s\n%s", d.currentStep.wrongAnswerMessage, d.currentStep.welcomeMessage),
+		Text:     fmt.Sprintf("%s", d.currentStep.wrongAnswerMessage),
 		Image:    "",
 		Keyboard: d.currentStep.possibleAnswers,
 	}

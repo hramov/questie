@@ -57,7 +57,7 @@ func main() {
 		} else {
 			switch text {
 			case "День рождения":
-				questDialog := &dialog.QuestDialog{}
+				questDialog := &dialog.BirthdayQuest{}
 				questDialog.InitSteps()
 
 				clients.mu.Lock()

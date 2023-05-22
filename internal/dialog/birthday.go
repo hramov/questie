@@ -1,10 +1,10 @@
 package dialog
 
-type QuestDialog struct {
+type BirthdayQuest struct {
 	Dialog
 }
 
-func (qd *QuestDialog) InitSteps() {
+func (bq *BirthdayQuest) InitSteps() {
 
 	// TODO add more questions
 
@@ -38,6 +38,6 @@ func (qd *QuestDialog) InitSteps() {
 		wrongAnswerMessage: "",
 	}
 
-	qd.startStep = startStep
-	qd.currentStep = qd.startStep
+	bq.startStep = startStep
+	bq.currentStep = bq.startStep
 }
