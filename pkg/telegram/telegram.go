@@ -3,7 +3,7 @@ package telegram
 import (
 	"fmt"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"github.com/hramov/wishlist/internal/dialog"
+	"github.com/hramov/questie/internal/dialog"
 )
 
 type Bot struct {

@@ -2,9 +2,9 @@ package main
 
 import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"github.com/hramov/wishlist/internal"
-	"github.com/hramov/wishlist/internal/dialog"
-	"github.com/hramov/wishlist/pkg/telegram"
+	"github.com/hramov/questie/internal"
+	"github.com/hramov/questie/internal/dialog"
+	"github.com/hramov/questie/pkg/telegram"
 	"github.com/joho/godotenv"
 	"log"
 	"os"
