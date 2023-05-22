@@ -1,6 +1,8 @@
-package dialog
+package internal
 
-import "testing"
+import (
+	"testing"
+)
 
 type TestQuest struct {
 	Dialog

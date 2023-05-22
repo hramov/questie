@@ -3,7 +3,7 @@ package main
 import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/hramov/questie/internal"
-	"github.com/hramov/questie/internal/dialog"
+	"github.com/hramov/questie/internal/quests"
 	"github.com/hramov/questie/pkg/telegram"
 	"github.com/joho/godotenv"
 	"log"
@@ -11,7 +11,7 @@ import (
 	"sync"
 )
 
-type ClientMap = map[int64]dialog.Questier
+type ClientMap = map[int64]internal.Questier
 
 type Clients struct {
 	mu   sync.Mutex
@@ -57,7 +57,7 @@ func main() {
 		} else {
 			switch text {
 			case "День рождения":
-				questDialog := &dialog.BirthdayQuest{}
+				questDialog := &quests.BirthdayQuest{}
 				questDialog.InitSteps()
 
 				clients.mu.Lock()
@@ -86,7 +86,7 @@ func main() {
 	}
 }
 
-func sendHelloMessage(dialog dialog.Questier, chatID int64, bot *telegram.Bot) {
+func sendHelloMessage(dialog internal.Questier, chatID int64, bot *telegram.Bot) {
 	dialog.Reset()
 	result := dialog.Show()
 	keyboard := bot.GenerateKeyboard(result)

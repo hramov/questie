@@ -3,7 +3,7 @@ package telegram
 import (
 	"fmt"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"github.com/hramov/questie/internal/dialog"
+	"github.com/hramov/questie/internal"
 )
 
 type Bot struct {
@@ -41,7 +41,7 @@ func (b *Bot) GetUpdates() chan tgbotapi.Update {
 	return b.update
 }
 
-func (b *Bot) GenerateKeyboard(result dialog.BotAnswer) *tgbotapi.ReplyKeyboardMarkup {
+func (b *Bot) GenerateKeyboard(result internal.BotAnswer) *tgbotapi.ReplyKeyboardMarkup {
 	keys := result.Keyboard
 
 	if keys == nil || len(keys) == 0 {
