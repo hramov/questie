@@ -1,6 +1,9 @@
 package internal
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Dialog struct {
 	LastMessageId    int64
@@ -18,31 +21,32 @@ func (d *Dialog) Show() BotAnswer {
 }
 
 func (d *Dialog) Next(answer string) BotAnswer {
-	if d.CurrentStep.ExpectedAnswer == answer {
+	if strings.ToLower(d.CurrentStep.ExpectedAnswer) == strings.ToLower(answer) {
 		message := d.CurrentStep.RightAnswerMessage
 		if d.CurrentStep.NextStep != nil {
 			d.CurrentStepIndex++
 			d.CurrentStep = d.CurrentStep.NextStep
 			return BotAnswer{
 				Text:     fmt.Sprintf("%s\n%s", message, d.CurrentStep.WelcomeMessage),
-				Image:    "",
+				Image:    d.CurrentStep.WelcomeMessageImage,
 				Keyboard: d.CurrentStep.PossibleAnswers,
 			}
 		}
 		return BotAnswer{
-			Text: message,
+			Text:  message,
+			Image: d.CurrentStep.WelcomeMessageImage,
 		}
 	}
 	if d.CurrentStep.NextStep != nil {
 		return BotAnswer{
 			Text:     fmt.Sprintf("%s\n%s", d.CurrentStep.WrongAnswerMessage, d.CurrentStep.WelcomeMessage),
-			Image:    "",
+			Image:    d.CurrentStep.WelcomeMessageImage,
 			Keyboard: d.CurrentStep.PossibleAnswers,
 		}
 	}
 	return BotAnswer{
 		Text:     fmt.Sprintf("%s", d.CurrentStep.WrongAnswerMessage),
-		Image:    "",
+		Image:    d.CurrentStep.WelcomeMessageImage,
 		Keyboard: d.CurrentStep.PossibleAnswers,
 	}
 }

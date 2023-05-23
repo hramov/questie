@@ -77,6 +77,18 @@ func main() {
 				}
 
 				result := currentQuest.Next(text)
+
+				if result.Image != "" {
+					data, err := os.ReadFile(result.Image)
+					if err != nil {
+						log.Println(err.Error())
+						return
+					}
+					b := tgbotapi.FileBytes{Name: "image.png", Bytes: data}
+					imgMsg := tgbotapi.NewPhoto(chatID, b)
+					bot.SendImage(imgMsg)
+				}
+
 				keyboard := bot.GenerateKeyboard(result)
 				msg := tgbotapi.NewMessage(chatID, result.Text)
 				msg.ReplyMarkup = keyboard
