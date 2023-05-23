@@ -92,3 +92,10 @@ func (b *Bot) SendMessage(message tgbotapi.MessageConfig) {
 		panic(fmt.Sprintf("cannot send message: %v", err.Error()))
 	}
 }
+
+func (b *Bot) SendImage(message tgbotapi.PhotoConfig) {
+	_, err := b.bot.Send(message)
+	if err != nil {
+		panic(fmt.Sprintf("cannot send message: %v", err.Error()))
+	}
+}

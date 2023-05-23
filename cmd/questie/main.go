@@ -92,6 +92,17 @@ func sendHelloMessage(dialog internal.Questier, chatID int64, bot *telegram.Bot)
 	keyboard := bot.GenerateKeyboard(result)
 	msg := tgbotapi.NewMessage(chatID, result.Text)
 	msg.ReplyMarkup = keyboard
+
+	if result.Image != "" {
+		data, err := os.ReadFile(result.Image)
+		if err != nil {
+			log.Println(err.Error())
+			return
+		}
+		b := tgbotapi.FileBytes{Name: "image.png", Bytes: data}
+		imgMsg := tgbotapi.NewPhoto(chatID, b)
+		bot.SendImage(imgMsg)
+	}
 	bot.SendMessage(msg)
 }
 

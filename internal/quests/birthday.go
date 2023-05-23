@@ -28,13 +28,14 @@ func (bq *BirthdayQuest) InitSteps() {
 	}
 
 	startStep := &internal.Step{
-		Name:               "start",
-		WelcomeMessage:     "Welcome to my new quest",
-		PossibleAnswers:    []string{"Да!"},
-		ExpectedAnswer:     "Да!",
-		NextStep:           firstQuestionStep,
-		RightAnswerMessage: "Get ready for questions",
-		WrongAnswerMessage: "",
+		Name:                "start",
+		WelcomeMessage:      "Welcome to my new quest",
+		WelcomeMessageImage: internal.AssetsFolder + "birthday/Image.jpg",
+		PossibleAnswers:     []string{"Да!"},
+		ExpectedAnswer:      "Да!",
+		NextStep:            firstQuestionStep,
+		RightAnswerMessage:  "Get ready for questions",
+		WrongAnswerMessage:  "",
 	}
 
 	bq.StartStep = startStep

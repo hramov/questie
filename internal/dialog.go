@@ -2,29 +2,6 @@ package internal
 
 import "fmt"
 
-type Questier interface {
-	InitSteps()
-	Show() BotAnswer
-	Next(answer string) BotAnswer
-	Reset()
-}
-
-type Step struct {
-	Name               string
-	WelcomeMessage     string
-	PossibleAnswers    []string
-	ExpectedAnswer     string
-	NextStep           *Step
-	RightAnswerMessage string
-	WrongAnswerMessage string
-}
-
-type BotAnswer struct {
-	Text     string
-	Image    string
-	Keyboard []string
-}
-
 type Dialog struct {
 	LastMessageId    int64
 	StartStep        *Step
@@ -35,7 +12,7 @@ type Dialog struct {
 func (d *Dialog) Show() BotAnswer {
 	return BotAnswer{
 		Text:     d.CurrentStep.WelcomeMessage,
-		Image:    "",
+		Image:    d.CurrentStep.WelcomeMessageImage,
 		Keyboard: d.CurrentStep.PossibleAnswers,
 	}
 }
