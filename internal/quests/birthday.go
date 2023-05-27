@@ -8,67 +8,57 @@ type BirthdayQuest struct {
 
 func (bq *BirthdayQuest) InitSteps() {
 	endStep := &internal.Step{
-		Name:               "end",
-		WelcomeMessage:     "С днем рождения, дорогая моя Настенька. Я тебя очень сильно люблю!",
-		PossibleAnswers:    []string{"И я тебя"},
-		ExpectedAnswer:     "И я тебя",
-		NextStep:           nil,
-		RightAnswerMessage: "",
-		WrongAnswerMessage: "",
+		Name:                "end",
+		WelcomeMessage:      "С днем рождения, дорогая моя Настенька. Я тебя очень сильно люблю!",
+		WelcomeMessageImage: internal.AssetsFolder + "birthday/8.jpg",
+		PossibleAnswers:     []string{"И я тебя"},
+		ExpectedAnswer:      "И я тебя",
+		NextStep:            nil,
+		RightAnswerMessage:  "",
+		WrongAnswerMessage:  "",
 	}
 
-	seventhQuestionStep := &internal.Step{
-		Name:                "first_question",
-		WelcomeMessage:      "Ответ на это задание тебе подскажет Машина!",
-		WelcomeMessageImage: internal.AssetsFolder + "birthday/6.jpg",
+	sixthQuestionStep := &internal.Step{
+		Name:                "sixth_question",
+		WelcomeMessage:      "Один из наиболее важных элементов колеса, представляющий собой упругую резино-металло-тканевую оболочку, установленную на обод диска",
+		WelcomeMessageImage: internal.AssetsFolder + "birthday/7.jpg",
 		PossibleAnswers:     []string{},
-		ExpectedAnswer:      "21",
+		ExpectedAnswer:      "123",
 		NextStep:            endStep,
 		RightAnswerMessage:  "",
 		WrongAnswerMessage:  "Что-то путаешь, дорогая :-) Попробуем еще раз",
 	}
 
-	sixthQuestionStep := &internal.Step{
-		Name:                "first_question",
-		WelcomeMessage:      "Ответ на это задание тебе подскажет Машина!",
-		WelcomeMessageImage: internal.AssetsFolder + "birthday/6.jpg",
-		PossibleAnswers:     []string{},
-		ExpectedAnswer:      "21",
-		NextStep:            seventhQuestionStep,
-		RightAnswerMessage:  "",
-		WrongAnswerMessage:  "Что-то путаешь, дорогая :-) Попробуем еще раз",
-	}
-
 	fifthQuestionStep := &internal.Step{
-		Name:                "first_question",
-		WelcomeMessage:      "Ответ на это задание тебе подскажет Машина!",
+		Name:                "fifth_question",
+		WelcomeMessage:      "Просто хочу напомнить, что скоро мы поедем на поезде...",
 		WelcomeMessageImage: internal.AssetsFolder + "birthday/6.jpg",
 		PossibleAnswers:     []string{},
-		ExpectedAnswer:      "21",
+		ExpectedAnswer:      "123",
 		NextStep:            sixthQuestionStep,
 		RightAnswerMessage:  "",
 		WrongAnswerMessage:  "Что-то путаешь, дорогая :-) Попробуем еще раз",
 	}
 
 	forthQuestionStep := &internal.Step{
-		Name:                "first_question",
-		WelcomeMessage:      "Ответ на это задание тебе подскажет Машина!",
+		Name:                "forth_question",
+		WelcomeMessage:      "Чтобы получить следующую подсказку нужно знать, чем занимался этот крутой мужик",
 		WelcomeMessageImage: internal.AssetsFolder + "birthday/5.jpg",
 		PossibleAnswers:     []string{},
-		ExpectedAnswer:      "21",
+		ExpectedAnswer:      "123",
 		NextStep:            fifthQuestionStep,
-		RightAnswerMessage:  "",
+		RightAnswerMessage:  "Точно-точно",
 		WrongAnswerMessage:  "Что-то путаешь, дорогая :-) Попробуем еще раз",
 	}
 
 	thirdQuestionStep := &internal.Step{
 		Name:                "third_question",
-		WelcomeMessage:      "Вопрос на знание моих интересов. Закончи цитату: \"Сын мой, в день, когда ты родился, сами леса Лордерона прошептали твое имя - ?\"",
+		WelcomeMessage:      "Следующий вопрос пришел в нашу редакцию от кота Базилио",
 		WelcomeMessageImage: internal.AssetsFolder + "birthday/4.jpg",
-		PossibleAnswers:     []string{"Кенарий", "Артас", "Менетил", "Тирион"},
-		ExpectedAnswer:      "Артас",
+		PossibleAnswers:     []string{},
+		ExpectedAnswer:      "123",
 		NextStep:            forthQuestionStep,
-		RightAnswerMessage:  "",
+		RightAnswerMessage:  "Да, все верно!",
 		WrongAnswerMessage:  "Нет... еще это никнейм Папича",
 	}
 
@@ -79,7 +69,7 @@ func (bq *BirthdayQuest) InitSteps() {
 		PossibleAnswers:     []string{},
 		ExpectedAnswer:      "Конденсатор",
 		NextStep:            thirdQuestionStep,
-		RightAnswerMessage:  "",
+		RightAnswerMessage:  "Есть!",
 		WrongAnswerMessage:  "Может быть, не та \"машина\"...",
 	}
 
@@ -90,7 +80,7 @@ func (bq *BirthdayQuest) InitSteps() {
 		PossibleAnswers:     []string{"19", "21", "23", "25"},
 		ExpectedAnswer:      "21",
 		NextStep:            secondQuestionStep,
-		RightAnswerMessage:  "",
+		RightAnswerMessage:  "Супер!",
 		WrongAnswerMessage:  "Что-то путаешь, дорогая :-) Попробуем еще раз",
 	}
 
